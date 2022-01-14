@@ -15,8 +15,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Harga
         $this->app->bind(
-            'App\Interfaces\Admin\HargaInterface_Admin', 
-            'App\Repositories\Admin\HargaRepository_Admin'
+            'App\Interfaces\Admin\Harga\HargaInterface_Admin', 
+            'App\Repositories\Admin\Harga\HargaRepository_Admin'
         );
     }
 

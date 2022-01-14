@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 // Memanggil Interface
-use App\Interfaces\Admin\HargaInterface_Admin;
+use App\Interfaces\Admin\Harga\HargaInterface_Admin;
 
 // Memanggil request Buatan Sendiri
 use App\Http\Requests\StoreHarga;
