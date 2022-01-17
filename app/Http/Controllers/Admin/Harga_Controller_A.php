@@ -33,4 +33,19 @@ class Harga_Controller_A extends Controller
      {
         return $this->hargaInterface_Admin->save_harga($request);
      }
+
+     public function update_harga(int $id)
+     {
+        return $this->hargaInterface_Admin->update_harga($id);
+     }
+
+     public function save_update(StoreHarga $request,int $id)
+     {
+        return $this->hargaInterface_Admin->save_update($request, $id);
+     }
+
+     public function delete_harga(int $id)
+     {
+        return $this->hargaInterface_Admin->delete_harga($id);
+     }
 }

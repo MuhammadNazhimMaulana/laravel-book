@@ -45,5 +45,42 @@ class HargaRepository_Admin implements HargaInterface_Admin
         return redirect('/harga')->with('success', 'Harga Baru Berhasil Ditambahkan');
     }
 
+    public function update_harga(int $id)
+    {
+        $harga = Harga_Model::where('id_harga', $id)->first();
+
+        $data = [
+            'title' => 'Harga',
+            'harga' => $harga
+        ];
+
+        return view('Admin/Harga/update_harga', $data);        
+    }
+
+    public function save_update(StoreHarga $request, int $id)
+    {
+        $harga = Harga_Model::where('id_harga', $id)->first();
+
+        $data_harga = [
+            'harga_satuan' => $request->input('harga_satuan')
+        ];
+
+        //Create Data Harga Baru 
+        Harga_Model::where('id_harga', $harga->id_harga)->update($data_harga);
+
+        return redirect('/harga')->with('success-update', 'Harga Baru Berhasil Diubah');        
+    }
+
+    public function delete_harga(int $id)
+    {
+        // Getting specific data
+        $harga = Harga_Model::where('id_harga', $id)->first();
+
+        // Delete data from table
+        Harga_Model::where('id_harga', $harga->id_harga)->delete();
+
+        return redirect('/harga')->with('danger', 'Harga Baru Berhasil Dihapus');
+    }
+
 }
 

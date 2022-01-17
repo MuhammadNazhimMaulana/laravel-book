@@ -16,6 +16,20 @@
         </div>
         @endif
 
+        {{-- Jikalau berhasil Ubah data --}}
+        @if(session()->has('success-update'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success-update') }}
+        </div>
+        @endif
+
+        {{-- Jikalau berhasil Hapus data --}}
+        @if(session()->has('danger'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('danger') }}
+        </div>
+        @endif
+
         <a href="/harga/create" class="btn btn-primary">Tambah Harga</a>
         <table class="mt-3" width="100%">
             <thead>
@@ -31,7 +45,11 @@
                     <td>
                         <a class="btn btn-primary" href="/view/update/{{ $prize->id_harga }}">View</a>
                         <a class="btn btn-info" href="/harga/update/{{ $prize->id_harga }}">Edit</a>
-                        <a class="btn btn-danger" href="/harga/update/{{ $prize->id_harga }}">Delete</a>
+                        <form action="/harga/delete/{{ $prize->id_harga }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
