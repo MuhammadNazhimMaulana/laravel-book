@@ -18,6 +18,12 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Interfaces\Admin\Harga\HargaInterface_Admin', 
             'App\Repositories\Admin\Harga\HargaRepository_Admin'
         );
+
+        // Genre
+        $this->app->bind(
+            'App\Interfaces\Admin\Genre\GenreInterface_Admin', 
+            'App\Repositories\Admin\Genre\GenreRepository_Admin'
+        );
     }
 
     /**

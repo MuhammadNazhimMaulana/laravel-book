@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Harga_Controller_A;
+use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A};
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +25,14 @@ Route::prefix('/harga')->group(function () {
     Route::get('/update/{id}', [Harga_Controller_A::class, 'update_harga']);
     Route::put('/update/{id}', [Harga_Controller_A::class, 'save_update']);
     Route::delete('/delete/{id}', [Harga_Controller_A::class, 'delete_harga']);
+});
+
+Route::prefix('/genre')->group(function () {
+    Route::get('/', [Genre_Controller_A::class, 'get_genre']);
+    Route::get('/create', [Genre_Controller_A::class, 'tambah_genre']);
+    Route::post('/create', [Genre_Controller_A::class, 'save_genre']);
+    Route::get('/update/{id}', [Genre_Controller_A::class, 'update_genre']);
+    Route::put('/update/{id}', [Genre_Controller_A::class, 'save_update']);
+    Route::delete('/delete/{id}', [Genre_Controller_A::class, 'delete_genre']);
 });
 
