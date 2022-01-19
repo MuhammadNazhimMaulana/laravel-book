@@ -14,7 +14,7 @@ class CreateTblHarga extends Migration
     public function up()
     {
         Schema::create('tbl_harga', function (Blueprint $table) {
-            $table->id('id_harga');
+            $table->id();
             $table->integer('harga_satuan');
             $table->timestamps();
         });

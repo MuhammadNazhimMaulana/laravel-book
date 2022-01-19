@@ -47,7 +47,7 @@ class HargaRepository_Admin implements HargaInterface_Admin
 
     public function update_harga(int $id)
     {
-        $harga = Harga_Model::where('id_harga', $id)->first();
+        $harga = Harga_Model::where('id', $id)->first();
 
         $data = [
             'title' => 'Harga',
@@ -59,14 +59,14 @@ class HargaRepository_Admin implements HargaInterface_Admin
 
     public function save_update(StoreHarga $request, int $id)
     {
-        $harga = Harga_Model::where('id_harga', $id)->first();
+        $harga = Harga_Model::where('id', $id)->first();
 
         $data_harga = [
             'harga_satuan' => $request->input('harga_satuan')
         ];
 
         //Create Data Harga Baru 
-        Harga_Model::where('id_harga', $harga->id_harga)->update($data_harga);
+        Harga_Model::where('id', $harga->id)->update($data_harga);
 
         return redirect('/harga')->with('success-update', 'Harga Baru Berhasil Diubah');        
     }
@@ -74,10 +74,10 @@ class HargaRepository_Admin implements HargaInterface_Admin
     public function delete_harga(int $id)
     {
         // Getting specific data
-        $harga = Harga_Model::where('id_harga', $id)->first();
+        $harga = Harga_Model::where('id', $id)->first();
 
         // Delete data from table
-        Harga_Model::where('id_harga', $harga->id_harga)->delete();
+        Harga_Model::where('id', $harga->id)->delete();
 
         return redirect('/harga')->with('danger', 'Harga Baru Berhasil Dihapus');
     }

@@ -43,9 +43,9 @@
                 <tr>
                     <td>{{ $prize->harga_satuan }}</td>
                     <td>
-                        <a class="btn btn-primary" href="/view/update/{{ $prize->id_harga }}">View</a>
-                        <a class="btn btn-info" href="/harga/update/{{ $prize->id_harga }}">Edit</a>
-                        <form action="/harga/delete/{{ $prize->id_harga }}" method="POST" class="d-inline">
+                        <a class="btn btn-primary" href="/view/update/{{ $prize->id }}">View</a>
+                        <a class="btn btn-info" href="/harga/update/{{ $prize->id }}">Edit</a>
+                        <form action="/harga/delete/{{ $prize->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')">Delete</button>

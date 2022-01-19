@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblGenre extends Migration
+class CreateTblPenulis extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTblGenre extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_genre', function (Blueprint $table) {
+        Schema::create('tbl_penulis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_genre', 125);
+            $table->string('nama_penulis', 120);
+            $table->integer('umur_penulis');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTblGenre extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_genre');
+        Schema::dropIfExists('tbl_penulis');
     }
 }

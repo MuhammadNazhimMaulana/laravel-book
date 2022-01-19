@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblGenre extends Migration
+class CreateTblBuku extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateTblGenre extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_genre', function (Blueprint $table) {
+        Schema::create('tbl_buku', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_genre', 125);
+            $table->foreignId('hargaId')->constrained('tbl_harga');
+            $table->foreignId('genreId')->constrained('tbl_genre');
+            $table->string('judul_buku', 121);
+            $table->integer('jumlah_halaman');
+            $table->date('tanggal_publikasi');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateTblGenre extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_genre');
+        Schema::dropIfExists('tbl_buku');
     }
 }

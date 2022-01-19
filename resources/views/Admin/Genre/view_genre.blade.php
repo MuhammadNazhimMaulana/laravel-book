@@ -43,9 +43,9 @@
                 <tr>
                     <td>{{ $genre->nama_genre }}</td>
                     <td>
-                        <a class="btn btn-primary" href="/view/update/{{ $genre->id_genre }}">View</a>
-                        <a class="btn btn-info" href="/genre/update/{{ $genre->id_genre }}">Edit</a>
-                        <form action="/genre/delete/{{ $genre->id_genre }}" method="POST" class="d-inline">
+                        <a class="btn btn-primary" href="/view/update/{{ $genre->id }}">View</a>
+                        <a class="btn btn-info" href="/genre/update/{{ $genre->id }}">Edit</a>
+                        <form action="/genre/delete/{{ $genre->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')">Delete</button>

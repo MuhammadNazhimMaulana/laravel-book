@@ -47,7 +47,7 @@ class GenreRepository_Admin implements GenreInterface_Admin
 
     public function update_genre(int $id)
     {
-        $genre = Genre_Model::where('id_genre', $id)->first();
+        $genre = Genre_Model::where('id', $id)->first();
 
         $data = [
             'title' => 'Genre',
@@ -59,14 +59,14 @@ class GenreRepository_Admin implements GenreInterface_Admin
 
     public function save_update(StoreGenre $request, int $id)
     {
-        $genre = Genre_Model::where('id_genre', $id)->first();
+        $genre = Genre_Model::where('id', $id)->first();
 
         $data_genre = [
             'nama_genre' => $request->input('nama_genre')
         ];
 
         //Create Data Genre Baru 
-        Genre_Model::where('id_genre', $genre->id_genre)->update($data_genre);
+        Genre_Model::where('id', $genre->id)->update($data_genre);
 
         return redirect('/genre')->with('success-update', 'Genre Baru Berhasil Diubah');        
     }
@@ -74,10 +74,10 @@ class GenreRepository_Admin implements GenreInterface_Admin
     public function delete_genre(int $id)
     {
         // Getting specific data
-        $genre = Genre_Model::where('id_genre', $id)->first();
+        $genre = Genre_Model::where('id', $id)->first();
 
         // Delete data from table
-        Genre_Model::where('id_genre', $genre->id_genre)->delete();
+        Genre_Model::where('id', $genre->id)->delete();
 
         return redirect('/genre')->with('danger', 'Genre Baru Berhasil Dihapus');
     }
