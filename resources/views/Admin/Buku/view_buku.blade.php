@@ -35,6 +35,8 @@
             <thead>
                 <tr>
                     <td>Judul Buku</td>
+                    <td>Nama Penulis</td>
+                    <td>Genre Buku</td>
                     <td>Aksi</td>
                 </tr>
             </thead>
@@ -42,10 +44,12 @@
                 @foreach ($books as $book)    
                 <tr>
                     <td>{{ $book->judul_buku }}</td>
+                    <td>{{ $book->penulis->nama_penulis }}</td>
+                    <td>{{ $book->genre->nama_genre }}</td>
                     <td>
                         <a class="btn btn-primary" href="/view/update/{{ $book->id }}">View</a>
-                        <a class="btn btn-info" href="/genre/update/{{ $book->id }}">Edit</a>
-                        <form action="/genre/delete/{{ $book->id }}" method="POST" class="d-inline">
+                        <a class="btn btn-info" href="/buku/update/{{ $book->id }}">Edit</a>
+                        <form action="/buku/delete/{{ $book->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')">Delete</button>

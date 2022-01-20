@@ -30,6 +30,7 @@ class StoreBuku extends FormRequest
             'judul_buku' => 'required',
             'jumlah_halaman' => 'required',
             'tanggal_publikasi' => 'required',
+            'foto_buku' => 'image|file|max:1024'
         ];
     }
 }

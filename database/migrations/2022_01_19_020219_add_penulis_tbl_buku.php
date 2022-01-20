@@ -15,6 +15,7 @@ class AddPenulisTblBuku extends Migration
     {
         Schema::table('tbl_buku', function (Blueprint $table) {
             $table->foreignId('penulisId')->constrained('tbl_penulis');
+            $table->string('foto_buku');
         });
     }
 
@@ -26,7 +27,9 @@ class AddPenulisTblBuku extends Migration
     public function down()
     {
         Schema::table('tbl_buku', function (Blueprint $table) {
-            $table->dropColumn('comment_count');
+            $table->dropForeign('tbl_buku_penulisid_foreign');
+            $table->dropColumn('penulisId');
+            $table->dropColumn('foto_buku');
         });
     }
 }

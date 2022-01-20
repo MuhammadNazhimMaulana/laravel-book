@@ -36,6 +36,12 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Interfaces\Admin\Buku\BukuInterface_Admin', 
             'App\Repositories\Admin\Buku\BukuRepository_Admin'
         );
+
+        // Utama
+        $this->app->bind(
+            'App\Interfaces\Admin\Dashboard\UtamaInterface_Admin', 
+            'App\Repositories\Admin\Dashboard\UtamaRepository_Admin'
+        );
     }
 
     /**

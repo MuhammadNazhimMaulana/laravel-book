@@ -18,6 +18,6 @@
       </form>
     @else
     {{-- Jika Belum Login --}}
-      <a class="ms-4" href="/admin/login">Login</a>
+      <a class="ms-4 btn btn-primary" href="/admin/login">Login</a>
     @endauth
   </div>

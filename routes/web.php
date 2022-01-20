@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A, Penulis_Controller_A, Buku_Controller_A};
+use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A, Penulis_Controller_A, Buku_Controller_A, Utama_A};
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +52,9 @@ Route::prefix('/buku')->group(function () {
     Route::get('/update/{id}', [Buku_Controller_A::class, 'update_buku']);
     Route::put('/update/{id}', [Buku_Controller_A::class, 'save_update']);
     Route::delete('/delete/{id}', [Buku_Controller_A::class, 'delete_buku']);
+});
+
+Route::prefix('/main')->group(function () {
+    Route::get('/', [Utama_A::class, 'utama']);
 });
 
