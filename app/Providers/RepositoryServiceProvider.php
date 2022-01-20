@@ -24,6 +24,12 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Interfaces\Admin\Genre\GenreInterface_Admin', 
             'App\Repositories\Admin\Genre\GenreRepository_Admin'
         );
+
+        // Penulis
+        $this->app->bind(
+            'App\Interfaces\Admin\Penulis\PenulisInterface_Admin', 
+            'App\Repositories\Admin\Penulis\PenulisRepository_Admin'
+        );
     }
 
     /**
