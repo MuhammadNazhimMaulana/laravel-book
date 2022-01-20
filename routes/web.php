@@ -45,3 +45,12 @@ Route::prefix('/genre')->group(function () {
     Route::delete('/delete/{id}', [Genre_Controller_A::class, 'delete_genre']);
 });
 
+Route::prefix('/buku')->group(function () {
+    Route::get('/', [Buku_Controller_A::class, 'get_buku']);
+    Route::get('/create', [Buku_Controller_A::class, 'tambah_buku']);
+    Route::post('/create', [Buku_Controller_A::class, 'save_buku']);
+    Route::get('/update/{id}', [Buku_Controller_A::class, 'update_buku']);
+    Route::put('/update/{id}', [Buku_Controller_A::class, 'save_update']);
+    Route::delete('/delete/{id}', [Buku_Controller_A::class, 'delete_buku']);
+});
+

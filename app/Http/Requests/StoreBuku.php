@@ -13,7 +13,7 @@ class StoreBuku extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreBuku extends FormRequest
     public function rules()
     {
         return [
-            //
+            'hargaId' => 'required',
+            'genreId' => 'required',
+            'penulisId' => 'required',
+            'judul_buku' => 'required',
+            'jumlah_halaman' => 'required',
+            'tanggal_publikasi' => 'required',
         ];
     }
 }

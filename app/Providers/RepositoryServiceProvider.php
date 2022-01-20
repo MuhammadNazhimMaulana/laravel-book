@@ -30,6 +30,12 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Interfaces\Admin\Penulis\PenulisInterface_Admin', 
             'App\Repositories\Admin\Penulis\PenulisRepository_Admin'
         );
+
+        // Buku
+        $this->app->bind(
+            'App\Interfaces\Admin\Buku\BukuInterface_Admin', 
+            'App\Repositories\Admin\Buku\BukuRepository_Admin'
+        );
     }
 
     /**
