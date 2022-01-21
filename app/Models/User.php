@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Inverse
+    public function setting()
+    {
+        return $this->hasOne(Settings_Model::class, 'userId');
+    }
 }
