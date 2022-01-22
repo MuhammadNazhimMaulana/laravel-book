@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Settings_Model::class, 'userId');
     }
+
+    public function pembelian()
+    {
+        return $this->hasOne(Pembelian_Model::class, 'userId');
+    }
 }

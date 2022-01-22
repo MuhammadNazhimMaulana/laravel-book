@@ -17,7 +17,7 @@ class Buku_Model extends Model
     protected $primaryKey = 'id';
 
     // Fillable
-    protected $fillable = ['hargaId', 'genreId', 'penulisId', 'judul_buku', 'foto_buku', 'jumlah_halaman', 'tanggal_publikasi', 'created_at', 'updated_at'];
+    protected $fillable = ['hargaId', 'genreId', 'penulisId', 'judul_buku', 'foto_buku', 'stok_buku', 'jumlah_halaman', 'tanggal_publikasi', 'created_at', 'updated_at'];
 
     // Relationship
     public function harga()
@@ -33,5 +33,11 @@ class Buku_Model extends Model
     public function penulis()
     {
         return $this->belongsTo(Penulis_Model::class, 'penulisId');
+    }
+
+    // Inverse
+    public function pembelian()
+    {
+        return $this->hasOne(Pembelian_Model::class, 'bukuId');
     }
 }

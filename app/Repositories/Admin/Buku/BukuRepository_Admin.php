@@ -44,6 +44,7 @@ class BukuRepository_Admin implements BukuInterface_Admin
             'genreId' => $request->input('genreId'),
             'penulisId' => $request->input('penulisId'),
             'judul_buku' => $request->input('judul_buku'),
+            'stok_buku' => $request->input('stok_buku'),
             'jumlah_halaman' => $request->input('jumlah_halaman'),
             'tanggal_publikasi' => $request->input('tanggal_publikasi'),
             'foto_buku' => $request->file('foto_buku')
@@ -83,6 +84,7 @@ class BukuRepository_Admin implements BukuInterface_Admin
             'genreId' => $request->input('genreId'),
             'penulisId' => $request->input('penulisId'),
             'judul_buku' => $request->input('judul_buku'),
+            'stok_buku' => $request->input('stok_buku'),
             'jumlah_halaman' => $request->input('jumlah_halaman'),
             'tanggal_publikasi' => $request->input('tanggal_publikasi')
         ];
