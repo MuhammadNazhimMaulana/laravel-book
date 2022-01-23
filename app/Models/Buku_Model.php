@@ -36,8 +36,8 @@ class Buku_Model extends Model
     }
 
     // Inverse
-    public function pembelian()
+    public function keranjang()
     {
-        return $this->hasOne(Pembelian_Model::class, 'bukuId');
+        return $this->hasOne(KeranjangBuku_Model::class, 'bukuId');
     }
 }

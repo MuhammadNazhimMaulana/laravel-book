@@ -25,9 +25,9 @@ class Pembelian_Model extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
-    public function buku()
+    // Inverse
+    public function keranjang()
     {
-        return $this->belongsTo(Buku_Model::class, 'bukuId');
+        return $this->hasOne(KeranjangBuku_Model::class, 'pembelianId');
     }
-
 }

@@ -42,6 +42,18 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Interfaces\Admin\Dashboard\UtamaInterface_Admin', 
             'App\Repositories\Admin\Dashboard\UtamaRepository_Admin'
         );
+
+        // Pembelian
+        $this->app->bind(
+            'App\Interfaces\Admin\Pembelian\PembelianInterface_Admin', 
+            'App\Repositories\Admin\Pembelian\PembelianRepository_Admin'
+        );
+
+        // Keranjang Buku
+        $this->app->bind(
+            'App\Interfaces\Admin\Keranjang Buku\KeranjangBukuInterface_Admin', 
+            'App\Repositories\Admin\Keranjang Buku\KeranjangBukuRepository_Admin'
+        );
     }
 
     /**

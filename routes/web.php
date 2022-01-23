@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A, Penulis_Controller_A, Buku_Controller_A, Utama_A};
+use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A, Penulis_Controller_A, Buku_Controller_A, Utama_A, Pembelian_Controller_A, Keranjang_Controller_A};
+use App\Models\KeranjangBuku_Model;
+use App\Models\Pembelian_Model;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,23 @@ Route::prefix('/buku')->group(function () {
     Route::get('/update/{id}', [Buku_Controller_A::class, 'update_buku']);
     Route::put('/update/{id}', [Buku_Controller_A::class, 'save_update']);
     Route::delete('/delete/{id}', [Buku_Controller_A::class, 'delete_buku']);
+});
+
+Route::prefix('/pembelian')->group(function () {
+    Route::get('/', [Pembelian_Controller_A::class, 'get_pembelian']);
+    Route::post('/create', [Pembelian_Controller_A::class, 'save_pembelian']);
+    Route::get('/update/{id}', [Pembelian_Controller_A::class, 'update_pembelian']);
+    Route::put('/update/{id}', [Pembelian_Controller_A::class, 'save_update']);
+    Route::delete('/delete/{id}', [Pembelian_Controller_A::class, 'delete_pembelian']);
+});
+
+Route::prefix('/keranjang-buku')->group(function () {
+    Route::get('/', [Keranjang_Controller_A::class, 'get_keranjang']);
+    Route::get('/create', [Keranjang_Controller_A::class, 'tambah_keranjang']);
+    Route::post('/create', [Keranjang_Controller_A::class, 'save_keranjang']);
+    Route::get('/update/{id}', [Keranjang_Controller_A::class, 'update_keranjang']);
+    Route::put('/update/{id}', [Keranjang_Controller_A::class, 'save_update']);
+    Route::delete('/delete/{id}', [Keranjang_Controller_A::class, 'delete_keranjang']);
 });
 
 Route::prefix('/main')->group(function () {
