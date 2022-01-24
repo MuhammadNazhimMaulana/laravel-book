@@ -30,7 +30,9 @@
         </div>
         @endif
 
-        <a href="/pembelian/create" class="btn btn-primary">Tambah Pembelian</a>
+        <form action="/pembelian/create" method="POST">
+            <button class="btn btn-primary">Tambah Pembelian</button>
+        </form>
         <table class="mt-3" width="100%">
             <thead>
                 <tr>

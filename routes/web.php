@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{Harga_Controller_A, Genre_Controller_A, Penulis_Controller_A, Buku_Controller_A, Utama_A, Pembelian_Controller_A, Keranjang_Controller_A};
+use App\Http\Controllers\Auth\Auth_Controller_A;
 use App\Models\KeranjangBuku_Model;
 use App\Models\Pembelian_Model;
 
@@ -19,6 +20,14 @@ use App\Models\Pembelian_Model;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Auth Admin
+Route::middleware('guest')->prefix('/admin')->group(function () {
+    Route::get('/login', [Auth_Controller_A::class, 'login'])->name('login');
+    Route::post('/login', [Auth_Controller_A::class, 'authLogin']);
+    Route::get('/register', [Auth_Controller_A::class, 'register']);
+    Route::post('/register', [Auth_Controller_A::class, 'storeRegister']);
+});
 
 Route::prefix('/harga')->group(function () {
     Route::get('/', [Harga_Controller_A::class, 'get_harga']);
@@ -73,7 +82,12 @@ Route::prefix('/keranjang-buku')->group(function () {
     Route::delete('/delete/{id}', [Keranjang_Controller_A::class, 'delete_keranjang']);
 });
 
-Route::prefix('/main')->group(function () {
+// Auth Admin
+Route::prefix('/admin')->group(function () {
+    Route::post('/logout', [Auth_Controller_A::class, 'logout']);
+});
+
+Route::prefix('/dashboard')->group(function () {
     Route::get('/', [Utama_A::class, 'utama']);
 });
 
