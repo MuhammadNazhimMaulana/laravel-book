@@ -24,7 +24,7 @@ class StorePembelian extends FormRequest
     public function rules()
     {
         return [
-            'userId' => 'required'
+            'userId' => 'numeric'
         ];
     }
 }

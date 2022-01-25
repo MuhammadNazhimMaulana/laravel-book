@@ -26,14 +26,20 @@ class PembelianRepository_Admin implements PembelianInterface_Admin
 
     public function save_pembelian(StorePembelian $request)
     {
+        // Getting name of cashier
+        $kasir = $request->session()->get('pengguna');
+
         $data_pembelian = [
-            'userId' => $request->input('userId')
+            'userId' => $kasir[2]
         ];
 
         //Create Data Pembelian Baru 
-        Pembelian_Model::create($data_pembelian);
+        $pembelian = Pembelian_Model::create($data_pembelian);
 
-        return redirect('/pembelian')->with('success', 'Pembelian Baru Berhasil Ditambahkan');
+        // Getting id pembelian obat
+        $id = $pembelian->id;
+
+        return redirect('/keranjang-buku/view/' .$id)->with('success', 'Keranjang Baru Berhasil Dibuat');
     }
 
     public function update_pembelian(int $id)

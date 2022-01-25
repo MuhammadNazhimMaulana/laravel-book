@@ -51,8 +51,8 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Keranjang Buku
         $this->app->bind(
-            'App\Interfaces\Admin\Keranjang Buku\KeranjangBukuInterface_Admin', 
-            'App\Repositories\Admin\Keranjang Buku\KeranjangBukuRepository_Admin'
+            'App\Interfaces\Admin\Pembelian\KeranjangBukuInterface_Admin', 
+            'App\Repositories\Admin\Pembelian\KeranjangBukuRepository_Admin'
         );
 
         // Keranjang Auth Admin

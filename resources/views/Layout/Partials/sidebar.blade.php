@@ -10,6 +10,7 @@
         <li class="{{ ($title == "Buku") ? 'active' : '' }}"><i class="fas fa-book"></i><a href="/buku">Buku</a></li>
         <li class="{{ ($title == "Penulis") ? 'active' : '' }}"><i class="fas fa-pen"></i><a href="/penulis">Penulis</a></li>
         <li class="{{ ($title == "Genre") ? 'active' : '' }}"><i class="fas fa-user-md"></i><a href="/genre">Genre</a></li>
+        <li class="{{ ($title == "Pembelian") ? 'active' : '' }}"><i class="fas fa-money-bill-wave-alt"></i><a href="/pembelian">Pembelian</a></li>
     </div>
 
 </section>

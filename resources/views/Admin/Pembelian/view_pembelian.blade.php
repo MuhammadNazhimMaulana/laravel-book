@@ -30,9 +30,11 @@
         </div>
         @endif
 
-        <form action="/pembelian/create" method="POST">
+        <form action="/pembelian/create" method="">
+            @csrf
             <button class="btn btn-primary">Tambah Pembelian</button>
         </form>
+        
         <table class="mt-3" width="100%">
             <thead>
                 <tr>

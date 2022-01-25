@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Interfaces\Admin\Pembelian\PembelianInterface_Admin;
 
 // Memanggil request Buatan Sendiri
-use App\Http\Requests\StorePenulis;
+use App\Http\Requests\StorePembelian;
 
 class Pembelian_Controller_A extends Controller
 {
@@ -23,7 +23,7 @@ class Pembelian_Controller_A extends Controller
        return $this->pembelianInterface_Admin->get_pembelian();
     }
 
-     public function save_pembelian(StorePenulis $request)
+     public function save_pembelian(StorePembelian $request)
      {
         return $this->pembelianInterface_Admin->save_pembelian($request);
      }
@@ -33,7 +33,7 @@ class Pembelian_Controller_A extends Controller
         return $this->pembelianInterface_Admin->update_pembelian($id);
      }
 
-     public function save_update(StorePenulis $request,int $id)
+     public function save_update(StorePembelian $request,int $id)
      {
         return $this->pembelianInterface_Admin->save_update($request, $id);
      }
