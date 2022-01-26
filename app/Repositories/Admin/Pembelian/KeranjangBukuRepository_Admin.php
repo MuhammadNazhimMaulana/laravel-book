@@ -6,7 +6,7 @@ namespace App\Repositories\Admin\Pembelian;
 use App\Interfaces\Admin\Pembelian\KeranjangBukuInterface_Admin;
 
 // Model
-use App\Models\KeranjangBuku_Model;
+use App\Models\{KeranjangBuku_Model, Pembelian_Model, Buku_Model};
 
 // Request
 use App\Http\Requests\StoreKeranjang;
@@ -18,7 +18,9 @@ class KeranjangBukuRepository_Admin implements KeranjangBukuInterface_Admin
     {
         $data = [
             'title' => 'Keranjang Buku',
-            'carts' => KeranjangBuku_Model::where('pembelianId', $id)->get()
+            'carts' => KeranjangBuku_Model::where('pembelianId', $id)->get(),
+            'books' => Buku_Model::all(),
+            'pembelian' => Pembelian_Model::where('id', $id)->get()
         ];
 
         return view('Admin/Keranjang Buku/view_keranjang', $data);
