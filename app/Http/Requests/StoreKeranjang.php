@@ -24,7 +24,9 @@ class StoreKeranjang extends FormRequest
     public function rules()
     {
         return [
-            //
+            'bukuId' => 'required',
+            'pembelianId' => 'required',
+            'harga_buku' => 'required|numeric'
         ];
     }
 }

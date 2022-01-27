@@ -14,7 +14,28 @@
         </div>
         @endif
 
-        <form action="/keranjang-obat/create" method="POST">
+        {{-- Jikalau Ada yang Double --}}
+        @if(session()->has('tambah-double'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('tambah-double') }}
+        </div>
+        @endif
+
+        {{-- Jikalau Berhasil tambah Buku --}}
+        @if(session()->has('success-tambah'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success-tambah') }}
+        </div>
+        @endif
+
+        {{-- Sukses Menghapus --}}
+        @if(session()->has('danger'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('danger') }}
+        </div>
+        @endif
+
+        <form action="/keranjang-buku/create" method="POST">
             @csrf
                 <div class="d-flex justify-content-evenly">
                     <div class="col-md-5 mb-3">
@@ -49,6 +70,40 @@
                 <button type="submit" class="btn btn-primary">Tambah Isi Keranjang</button>
             </div>
         </form>
+
+    {{-- Tabel Keranjang --}}
+
+    <div class="d-flex justify-content-center mt-3">
+        <table class="mt-3" width="100%">
+            <thead>
+                <tr>
+                    <td>Judul Buku</td>
+                    <td>Harga Buku</td>
+                    <td>Aksi</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($carts as $cart)
+                <tr>
+                    <td>{{ $cart->buku->judul_buku }}</td>
+                    <td>{{ $cart->harga_buku }}</td>
+                    <td>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $cart->id }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                @endforeach
+                <tr>
+                    <td colspan="1">Total Belanja</td>
+                    <td>{{ $totals->total_harga }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{-- Form Final --}}
+
+    {{-- Memanggil Modal Update --}}
+    @include('Admin/Keranjang Buku/Modals.delete_keranjang')
 
     </div>
 </div>
