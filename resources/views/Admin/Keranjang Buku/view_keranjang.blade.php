@@ -1,11 +1,9 @@
 @extends('Layout.main_admin')
 
 @section('container')
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 <div class="values">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-        </div>
-    </div>
 
     <div class="board">
 
@@ -33,13 +31,13 @@
                     </div>
 
                     {{-- Input Id Pembelian --}}
-                        <input type="hidden" name="pembelianId" id="pembelianId" value="{{ $pembelian->id }}">
+                    <input type="hidden" name="pembelianId" id="pembelianId" value="{{ $pembelian->id }}">
 
 
                 <div class="col-md-5 mb-3">
-                    <label for="harga_obat" class="form-label">Harga Obat</label>
-                    <input type="number" name="harga_obat" class="form-control @error('harga_obat') is-invalid @enderror" id="harga_obat" readonly>
-                    @error('harga_obat')
+                    <label for="harga_buku" class="form-label">Harga Buku</label>
+                    <input type="number" name="harga_buku" class="form-control @error('harga_buku') is-invalid @enderror" id="harga_buku" readonly>
+                    @error('harga_buku')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -54,4 +52,50 @@
 
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+
+$.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+    $(document).ready(function() {
+    
+    // Getting prize of medicine and times it with how many that person buy
+    $('#bukuId').change(function() {
+
+        // Id Buku
+        var bukuId = $('#bukuId').val();
+
+        // Id Pembelian
+        var id = $('#pembelianId').val();
+
+        var action = 'get_cost';
+
+        if (bukuId != '') {
+            $.ajax({
+                url: id + "/harga_buku",
+                method: "GET",
+                data: {
+                    bukuId: bukuId,
+                    action: action
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#harga_buku').val(data.harga_satuan);
+                }
+            });
+
+        } else {
+            $('#harga_buku').val('');
+        }
+    });
+
+    });
+</script>
+
 @endsection

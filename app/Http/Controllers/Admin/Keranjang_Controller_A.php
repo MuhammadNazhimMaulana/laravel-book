@@ -22,4 +22,9 @@ class Keranjang_Controller_A extends Controller
     {
        return $this->keranjangBukuInterface_Admin->view_keranjang($id);
     }
+
+    public function action(Request $request)
+    {
+       return $this->keranjangBukuInterface_Admin->action($request);
+    }
 }
