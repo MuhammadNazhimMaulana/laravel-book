@@ -2,62 +2,35 @@
 
 namespace App\Observers;
 
-use App\Models\Pembelian_Model;
+use App\Models\{Pembelian_Model, Buku_Model, KeranjangBuku_Model};
+use Illuminate\Support\Facades\Log;
 
 class PembelianObserver
 {
     /**
-     * Handle the Pembelian_Model "created" event.
+     * Handle the Pembelian_Model "updating" event.
      *
      * @param  \App\Models\Pembelian_Model  $pembelian_Model
      * @return void
      */
-    public function created(Pembelian_Model $pembelian_Model)
+    
+    public function updating(Pembelian_Model $pembelian_Model)
     {
-        //
-    }
+        $keranjangBuku_Model = new KeranjangBuku_Model;
+        $buku_Model = new Buku_Model;
 
-    /**
-     * Handle the Pembelian_Model "updated" event.
-     *
-     * @param  \App\Models\Pembelian_Model  $pembelian_Model
-     * @return void
-     */
-    public function updated(Pembelian_Model $pembelian_Model)
-    {
-        //
-    }
+        $carts = $keranjangBuku_Model->where('pembelianId', $pembelian_Model->id)->get();
 
-    /**
-     * Handle the Pembelian_Model "deleted" event.
-     *
-     * @param  \App\Models\Pembelian_Model  $pembelian_Model
-     * @return void
-     */
-    public function deleted(Pembelian_Model $pembelian_Model)
-    {
-        //
-    }
+        // Mengurangi Jumlah Stok Buku
+        foreach($carts as $cart)
+        {
+            $stok_buku = $buku_Model->where('id', $cart->bukuId)->first();
 
-    /**
-     * Handle the Pembelian_Model "restored" event.
-     *
-     * @param  \App\Models\Pembelian_Model  $pembelian_Model
-     * @return void
-     */
-    public function restored(Pembelian_Model $pembelian_Model)
-    {
-        //
-    }
+            $data_buku = [
+                'stok_buku' => $stok_buku->stok_buku - 1
+            ];
 
-    /**
-     * Handle the Pembelian_Model "force deleted" event.
-     *
-     * @param  \App\Models\Pembelian_Model  $pembelian_Model
-     * @return void
-     */
-    public function forceDeleted(Pembelian_Model $pembelian_Model)
-    {
-        //
+            $buku_Model->where('id', $cart->bukuId)->update($data_buku);
+        }
     }
 }

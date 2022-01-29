@@ -28,14 +28,14 @@ class Pembelian_Controller_A extends Controller
         return $this->pembelianInterface_Admin->save_pembelian($request);
      }
 
-     public function update_pembelian(int $id)
-     {
-        return $this->pembelianInterface_Admin->update_pembelian($id);
-     }
-
      public function save_update(StorePembelian $request,int $id)
      {
         return $this->pembelianInterface_Admin->save_update($request, $id);
+     }
+
+     public function payment(int $id)
+     {
+        return $this->pembelianInterface_Admin->payment($id);
      }
 
      public function delete_pembelian(int $id)

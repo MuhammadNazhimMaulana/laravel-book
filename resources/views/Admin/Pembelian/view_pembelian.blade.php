@@ -16,13 +16,6 @@
         </div>
         @endif
 
-        {{-- Jikalau berhasil Ubah data --}}
-        @if(session()->has('success-update'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success-update') }}
-        </div>
-        @endif
-
         {{-- Jikalau berhasil Hapus data --}}
         @if(session()->has('danger'))
         <div class="alert alert-danger" role="alert">

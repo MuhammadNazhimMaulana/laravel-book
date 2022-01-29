@@ -101,6 +101,16 @@
     </div>
 
     {{-- Form Final --}}
+    <form action="/pembelian/update/{{ $pembelian->id }}" method="POST">
+        @method('put')
+        @csrf
+        <input type="hidden" name="id" id="id" value="{{ $pembelian->id }}">  
+        <input type="hidden" name="total_harga" id="total_harga" value="{{ $totals->total_harga }}">  
+        <input type="hidden" name="jumlah_beli" id="jumlah_beli" value="{{ $totals->buku }}">  
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary">Pembayaran</button>
+        </div>
+    </form>
 
     {{-- Memanggil Modal Update --}}
     @include('Admin/Keranjang Buku/Modals.delete_keranjang')

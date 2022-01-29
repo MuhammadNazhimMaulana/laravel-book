@@ -66,8 +66,8 @@ Route::prefix('/buku')->group(function () {
 Route::prefix('/pembelian')->group(function () {
     Route::get('/', [Pembelian_Controller_A::class, 'get_pembelian']);
     Route::get('/create', [Pembelian_Controller_A::class, 'save_pembelian']);
-    Route::get('/update/{id}', [Pembelian_Controller_A::class, 'update_pembelian']);
     Route::put('/update/{id}', [Pembelian_Controller_A::class, 'save_update']);
+    Route::get('/payment/{id}', [Pembelian_Controller_A::class, 'payment']);
     Route::delete('/delete/{id}', [Pembelian_Controller_A::class, 'delete_pembelian']);
 });
 
