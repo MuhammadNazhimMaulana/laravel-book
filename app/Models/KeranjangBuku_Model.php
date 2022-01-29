@@ -17,7 +17,7 @@ class KeranjangBuku_Model extends Model
     protected $primaryKey = 'id';
 
     // Fillable
-    protected $fillable = ['pembelianId', 'bukuId', 'harga_buku', 'created_at', 'updated_at'];
+    protected $fillable = ['pembelianId', 'bukuId', 'harga_buku', 'jumlah_beli','created_at', 'updated_at'];
 
     // Relationship
     public function buku()

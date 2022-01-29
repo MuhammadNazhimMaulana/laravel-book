@@ -74,7 +74,6 @@ Route::prefix('/pembelian')->group(function () {
 Route::prefix('/keranjang-buku')->group(function () {
     Route::get('/', [Keranjang_Controller_A::class, 'get_keranjang']);
     Route::get('/{id}', [Keranjang_Controller_A::class, 'view_keranjang']);
-    Route::get('{id}/harga_buku', [Keranjang_Controller_A::class, 'action']);
     Route::post('/create', [Keranjang_Controller_A::class, 'tambah_keranjang']);
     Route::put('/update/{id}', [Keranjang_Controller_A::class, 'save_update']);
     Route::delete('/delete/{id}', [Keranjang_Controller_A::class, 'delete_keranjang']);

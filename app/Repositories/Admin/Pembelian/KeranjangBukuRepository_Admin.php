@@ -33,23 +33,6 @@ class KeranjangBukuRepository_Admin implements KeranjangBukuInterface_Admin
         return view('Admin/Keranjang Buku/view_keranjang', $data);
     }
 
-    public function action(Request $request)
-    {
-
-        if ($request->input('action')) {
-            $action = $request->input('action');
-
-            if ($action == 'get_cost') {
-
-                $buku = Buku_Model::where('id', $request->input('bukuId'))->first();
-
-                $data = Harga_Model::where('id', $buku->hargaId)->first();
-
-                return response($data);
-            }
-        }
-    }
-
     public function tambah_keranjang(StoreKeranjang $request)
     {
         
@@ -60,6 +43,7 @@ class KeranjangBukuRepository_Admin implements KeranjangBukuInterface_Admin
             'pembelianId' => $request->input('pembelianId'),
             'bukuId' => $request->input('bukuId'),
             'harga_buku' => $request->input('harga_buku'),
+            'jumlah_beli' => $request->input('jumlah_beli'),
         ];
 
         // Cek jikalau ada nama Buku yang double di keranjang

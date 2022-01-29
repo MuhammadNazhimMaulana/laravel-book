@@ -1,7 +1,6 @@
 @extends('Layout.main_admin')
 
 @section('container')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <div class="values">
 
@@ -38,14 +37,14 @@
         <form action="/keranjang-buku/create" method="POST">
             @csrf
                 <div class="d-flex justify-content-evenly">
-                    <div class="col-md-5 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="bukuId" class="form-label">Judul Buku</label>
                         <select class="form-select" name="bukuId" id="bukuId">
                             @foreach ($books as $buku)
                                 @if(old('bukuId') == $buku->id)
-                                    <option value="{{ $buku->id }}" selected>{{ $buku->judul_buku }}</option>
+                                    <option data-harga="{{ $buku->harga->harga_satuan }}" value="{{ $buku->id }}" selected>{{ $buku->judul_buku }}</option>
                                 @else
-                                    <option value="{{ $buku->id }}">{{ $buku->judul_buku }}</option>
+                                    <option data-harga="{{ $buku->harga->harga_satuan }}" value="{{ $buku->id }}">{{ $buku->judul_buku }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -55,7 +54,17 @@
                     <input type="hidden" name="pembelianId" id="pembelianId" value="{{ $pembelian->id }}">
 
 
-                <div class="col-md-5 mb-3">
+                <div class="col-md-4 mb-3">
+                    <label for="jumlah_beli" class="form-label">Jumlah Beli</label>
+                    <input type="number" name="jumlah_beli" class="form-control @error('jumlah_beli') is-invalid @enderror" id="jumlah_beli">
+                    @error('jumlah_beli')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="col-md-3 mb-3">
                     <label for="harga_buku" class="form-label">Harga Buku</label>
                     <input type="number" name="harga_buku" class="form-control @error('harga_buku') is-invalid @enderror" id="harga_buku" readonly>
                     @error('harga_buku')
@@ -120,47 +129,14 @@
 @endsection
 
 @section('script')
+
 <script type="text/javascript">
-
-$.ajaxSetup({
-    headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-    $(document).ready(function() {
-    
-    // Getting prize of medicine and times it with how many that person buy
-    $('#bukuId').change(function() {
-
-        // Id Buku
-        var bukuId = $('#bukuId').val();
-
-        // Id Pembelian
-        var id = $('#pembelianId').val();
-
-        var action = 'get_cost';
-
-        if (bukuId != '') {
-            $.ajax({
-                url: id + "/harga_buku",
-                method: "GET",
-                data: {
-                    bukuId: bukuId,
-                    action: action
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    $('#harga_buku').val(data.harga_satuan);
-                }
-            });
-
-        } else {
-            $('#harga_buku').val('');
-        }
-    });
-
-    });
+$("[name='jumlah_beli']").on('input', function(e) {
+    e.preventDefault()
+    harga = $("[name='bukuId'] option:selected").data('harga')
+    qty = $(this).val()
+    $("[name='harga_buku']").val(harga * qty)
+})
 </script>
 
 @endsection
