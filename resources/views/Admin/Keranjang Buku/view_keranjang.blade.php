@@ -97,6 +97,7 @@
                     <td>{{ $cart->buku->judul_buku }}</td>
                     <td>{{ $cart->harga_buku }}</td>
                     <td>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#ModalUpdate{{ $cart->id }}" class="btn btn-warning text-white">Update</a>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $cart->id }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
@@ -122,6 +123,9 @@
     </form>
 
     {{-- Memanggil Modal Update --}}
+    @include('Admin/Keranjang Buku/Modals.update_keranjang')
+
+    {{-- Memanggil Modal Delete --}}
     @include('Admin/Keranjang Buku/Modals.delete_keranjang')
 
     </div>
