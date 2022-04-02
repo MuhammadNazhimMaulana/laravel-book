@@ -1,4 +1,3 @@
 # Laravel Book
 
-More Update soon will come, soon it will come
-
+More Update soon will come
