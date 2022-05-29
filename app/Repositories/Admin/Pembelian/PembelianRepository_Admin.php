@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Log;
 class PembelianRepository_Admin implements PembelianInterface_Admin
 {
 
+    public function __construct()
+    {
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;   
+    }
+
     public function get_pembelian()
     {
         $data = [
@@ -61,9 +76,27 @@ class PembelianRepository_Admin implements PembelianInterface_Admin
 
     public function payment(int $id)
     {
+        $transaksi = Pembelian_Model::where('id', $id)->first();
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $transaksi->total_harga,
+            ),
+            'customer_details' => array(
+                'first_name' => $transaksi->user->first_name,
+                'last_name' => $transaksi->user->last_name,
+                'email' => $transaksi->user->email,
+                'phone' => $transaksi->user->no_hp,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
         $data = [
             'title' => 'Pembelian',
-            'pembelian' => Pembelian_Model::where('id', $id)
+            'pembelian' => $transaksi,
+            "snapToken" => $snapToken,
         ];
 
         return view('Admin/Pembelian/payment_pembelian', $data);

@@ -31,14 +31,14 @@
         <table class="mt-3" width="100%">
             <thead>
                 <tr>
-                    <td>Pembelian</td>
+                    <td>Pembeli</td>
                     <td>Aksi</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($buyers as $pembelian)    
                 <tr>
-                    <td>{{ $pembelian->user->name }}</td>
+                    <td>{{ $pembelian->user->username }}</td>
                     <td>
                         <a class="btn btn-primary" href="/view/update/{{ $pembelian->id }}">View</a>
                         <a class="btn btn-info" href="/pembelian/update/{{ $pembelian->id }}">Edit</a>

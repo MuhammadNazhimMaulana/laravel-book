@@ -53,7 +53,7 @@ class AuthRepository_Admin implements AuthInterface_Admin
         User::create($data_register);
 
         // Session
-        $request->session()->flash('success', 'Registrasi tekah Berhasil Silakan Login');
+        $request->session()->flash('success', 'Registrasi telah Berhasil Silakan Login');
 
         // Redirect to Login
         return redirect('/admin/login');
