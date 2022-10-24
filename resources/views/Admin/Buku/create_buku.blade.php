@@ -47,7 +47,7 @@
 
                 <div class="mb-3">
                     <label for="stok_buku" class="form-label">Stok Buku</label>
-                    <input type="number" name="stok_buku" class="form-control @error('stok_buku') is-invalid @enderror" id="stok_buku" placeholder="Ex Horror ..." value="{{ old('stok_buku') }}">
+                    <input type="number" name="stok_buku" class="form-control @error('stok_buku') is-invalid @enderror" id="stok_buku" placeholder="1 2 3 ..." value="{{ old('stok_buku') }}">
                     @error('stok_buku')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -57,7 +57,7 @@
 
                 <div class="mb-3">
                     <label for="jumlah_halaman" class="form-label">Jumlah Halaman</label>
-                    <input type="number" name="jumlah_halaman" class="form-control @error('jumlah_halaman') is-invalid @enderror" id="jumlah_halaman" placeholder="Ex Horror ..." value="{{ old('jumlah_halaman') }}">
+                    <input type="number" name="jumlah_halaman" class="form-control @error('jumlah_halaman') is-invalid @enderror" id="jumlah_halaman" placeholder="1 2 3 ..." value="{{ old('jumlah_halaman') }}">
                     @error('jumlah_halaman')
                         <div class="invalid-feedback">
                             {{ $message }}
