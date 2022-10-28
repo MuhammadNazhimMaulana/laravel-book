@@ -11,6 +11,10 @@ use App\Models\Genre_Model;
 // Request
 use App\Http\Requests\StoreGenre;
 
+// Excel
+use App\Exports\GenreExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class GenreRepository_Admin implements GenreInterface_Admin
 {
     const PER_PAGE = 5;
@@ -23,6 +27,11 @@ class GenreRepository_Admin implements GenreInterface_Admin
         ];
 
         return view('Admin/Genre/view_genre', $data);
+    }
+
+    public function get_genre_excel()
+    {
+        return Excel::download(new GenreExport, 'genres.xlsx');
     }
 
     public function tambah_genre()

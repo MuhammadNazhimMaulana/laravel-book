@@ -48,6 +48,7 @@ Route::prefix('/penulis')->group(function () {
 
 Route::prefix('/genre')->group(function () {
     Route::get('/', [Genre_Controller_A::class, 'get_genre']);
+    Route::get('/excel', [Genre_Controller_A::class, 'get_genre_excel']);
     Route::get('/create', [Genre_Controller_A::class, 'tambah_genre']);
     Route::post('/create', [Genre_Controller_A::class, 'save_genre']);
     Route::get('/update/{id}', [Genre_Controller_A::class, 'update_genre']);

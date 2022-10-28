@@ -24,6 +24,11 @@ class Genre_Controller_A extends Controller
        return $this->genreInterface_Admin->get_genre();
     }
 
+    public function get_genre_excel()
+    {
+       return $this->genreInterface_Admin->get_genre_excel();
+    }
+
     public function tambah_genre()
     {
         return $this->genreInterface_Admin->tambah_genre();

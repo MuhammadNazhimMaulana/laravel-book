@@ -31,6 +31,7 @@
         @endif
 
         <a href="/genre/create" class="btn btn-primary">Tambah Genre</a>
+        <a href="/genre/excel" class="btn btn-success">Download Excel</a>
         <table class="mt-3" width="100%">
             <thead>
                 <tr>
