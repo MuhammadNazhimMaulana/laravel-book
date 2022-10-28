@@ -22,6 +22,11 @@ class Penulis_Controller_A extends Controller
     {
        return $this->penulisInterface_Admin->get_penulis();
     }
+     
+    public function get_penulis_excel()
+    {
+       return $this->penulisInterface_Admin->get_penulis_excel();
+    }
 
     public function tambah_penulis()
     {

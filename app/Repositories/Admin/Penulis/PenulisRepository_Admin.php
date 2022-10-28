@@ -11,6 +11,10 @@ use App\Models\Penulis_Model;
 // Request
 use App\Http\Requests\StorePenulis;
 
+// Excel
+use App\Exports\PenulisExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class PenulisRepository_Admin implements PenulisInterface_Admin
 {
 
@@ -22,6 +26,11 @@ class PenulisRepository_Admin implements PenulisInterface_Admin
         ];
 
         return view('Admin/Penulis/view_penulis', $data);
+    }
+
+    public function get_penulis_excel()
+    {
+        return Excel::download(new PenulisExport, 'writers.xlsx');
     }
 
     public function tambah_penulis()

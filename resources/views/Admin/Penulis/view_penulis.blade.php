@@ -31,6 +31,7 @@
         @endif
 
         <a href="/penulis/create" class="btn btn-primary">Tambah Penulis</a>
+        <a href="/penulis/excel" class="btn btn-success">Download Excel</a>
         <table class="mt-3" width="100%">
             <thead>
                 <tr>

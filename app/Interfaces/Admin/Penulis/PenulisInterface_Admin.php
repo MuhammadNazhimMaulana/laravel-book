@@ -7,6 +7,7 @@ use App\Http\Requests\StorePenulis;
 interface PenulisInterface_Admin
 {
     public function get_penulis();
+    public function get_penulis_excel();
     public function tambah_penulis();
     public function save_penulis(StorePenulis $request);
     public function update_penulis(int $id);

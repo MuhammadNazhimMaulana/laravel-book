@@ -38,6 +38,7 @@ Route::prefix('/harga')->group(function () {
 
 Route::prefix('/penulis')->group(function () {
     Route::get('/', [Penulis_Controller_A::class, 'get_penulis']);
+    Route::get('/excel', [Penulis_Controller_A::class, 'get_penulis_excel']);
     Route::get('/create', [Penulis_Controller_A::class, 'tambah_penulis']);
     Route::post('/create', [Penulis_Controller_A::class, 'save_penulis']);
     Route::get('/update/{id}', [Penulis_Controller_A::class, 'update_penulis']);
