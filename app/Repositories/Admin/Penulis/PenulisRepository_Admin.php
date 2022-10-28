@@ -17,12 +17,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PenulisRepository_Admin implements PenulisInterface_Admin
 {
+    const PER_PAGE = 5;
 
     public function get_penulis()
     {
         $data = [
             'title' => 'Penulis',
-            'writers' => Penulis_Model::paginate(5)
+            'writers' => Penulis_Model::paginate(self::PER_PAGE)
         ];
 
         return view('Admin/Penulis/view_penulis', $data);

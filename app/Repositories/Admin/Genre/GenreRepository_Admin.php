@@ -13,12 +13,13 @@ use App\Http\Requests\StoreGenre;
 
 class GenreRepository_Admin implements GenreInterface_Admin
 {
+    const PER_PAGE = 5;
 
     public function get_genre()
     {
         $data = [
             'title' => 'Genre',
-            'genres' => Genre_Model::paginate(5)
+            'genres' => Genre_Model::paginate(self::PER_PAGE)
         ];
 
         return view('Admin/Genre/view_genre', $data);

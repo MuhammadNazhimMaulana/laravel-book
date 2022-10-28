@@ -13,12 +13,13 @@ use App\Http\Requests\StoreHarga;
 
 class HargaRepository_Admin implements HargaInterface_Admin
 {
+    const PER_PAGE = 5;
 
     public function get_harga()
     {
         $data = [
             'title' => 'Harga',
-            'prizes' => Harga_Model::paginate(5)
+            'prizes' => Harga_Model::paginate(self::PER_PAGE)
         ];
 
         return view('Admin/Harga/view_harga', $data);

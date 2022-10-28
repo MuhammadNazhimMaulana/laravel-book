@@ -14,12 +14,13 @@ use App\Http\Requests\StoreBuku;
 
 class BukuRepository_Admin implements BukuInterface_Admin
 {
+    const PER_PAGE = 5;
 
     public function get_buku()
     {
         $data = [
             'title' => 'Buku',
-            'books' => Buku_Model::paginate(5)
+            'books' => Buku_Model::paginate(self::PER_PAGE)
         ];
 
         return view('Admin/Buku/view_buku', $data);
