@@ -12,6 +12,10 @@ use App\Models\{Buku_Model, Penulis_Model, Harga_Model, Genre_Model};
 // Request
 use App\Http\Requests\StoreBuku;
 
+// Excel
+use App\Exports\BukuExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class BukuRepository_Admin implements BukuInterface_Admin
 {
     const PER_PAGE = 5;
@@ -24,6 +28,11 @@ class BukuRepository_Admin implements BukuInterface_Admin
         ];
 
         return view('Admin/Buku/view_buku', $data);
+    }
+
+    public function get_buku_excel()
+    {
+        return Excel::download(new BukuExport, 'books.xlsx');
     }
 
     public function tambah_buku()

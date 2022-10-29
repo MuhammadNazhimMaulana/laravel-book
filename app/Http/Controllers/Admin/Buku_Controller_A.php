@@ -23,6 +23,11 @@ class Buku_Controller_A extends Controller
        return $this->bukuInterface_Admin->get_buku();
     }
 
+    public function get_buku_excel()
+    {
+       return $this->bukuInterface_Admin->get_buku_excel();
+    }
+
     public function tambah_buku()
     {
         return $this->bukuInterface_Admin->tambah_buku();

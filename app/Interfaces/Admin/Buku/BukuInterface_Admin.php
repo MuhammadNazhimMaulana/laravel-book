@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBuku;
 interface BukuInterface_Admin
 {
     public function get_buku();
+    public function get_buku_excel();
     public function tambah_buku();
     public function save_buku(StoreBuku $request);
     public function update_buku(int $id);

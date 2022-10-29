@@ -31,6 +31,7 @@
         @endif
 
         <a href="/buku/create" class="btn btn-primary">Tambah Buku</a>
+        <a href="/buku/excel" class="btn btn-success">Download Excel</a>
         <table class="mt-3" width="100%">
             <thead>
                 <tr>
