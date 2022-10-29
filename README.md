@@ -1,3 +1,3 @@
 # Laravel Book
 
-Update Soon
+More Updates Soon
