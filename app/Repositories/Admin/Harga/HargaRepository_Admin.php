@@ -11,6 +11,10 @@ use App\Models\Harga_Model;
 // Request
 use App\Http\Requests\StoreHarga;
 
+// Excel
+use App\Exports\HargaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class HargaRepository_Admin implements HargaInterface_Admin
 {
     const PER_PAGE = 5;
@@ -23,6 +27,11 @@ class HargaRepository_Admin implements HargaInterface_Admin
         ];
 
         return view('Admin/Harga/view_harga', $data);
+    }
+
+    public function get_harga_excel()
+    {
+        return Excel::download(new HargaExport, 'prizes.xlsx');
     }
 
     public function tambah_harga()

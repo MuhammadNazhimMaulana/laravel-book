@@ -24,6 +24,11 @@ class Harga_Controller_A extends Controller
        return $this->hargaInterface_Admin->get_harga();
     }
 
+    public function get_harga_excel()
+    {
+       return $this->hargaInterface_Admin->get_harga_excel();
+    }
+
     public function tambah_harga()
     {
         return $this->hargaInterface_Admin->tambah_harga();

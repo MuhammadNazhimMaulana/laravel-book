@@ -31,6 +31,7 @@
         @endif
 
         <a href="/harga/create" class="btn btn-primary">Tambah Harga</a>
+        <a href="/harga/excel" class="btn btn-success">Donwload Excel</a>
         <table class="mt-3" width="100%">
             <thead>
                 <tr>

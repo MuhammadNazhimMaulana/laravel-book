@@ -29,6 +29,7 @@ Route::middleware('guest')->prefix('/admin')->group(function () {
 
 Route::prefix('/harga')->group(function () {
     Route::get('/', [Harga_Controller_A::class, 'get_harga']);
+    Route::get('/excel', [Harga_Controller_A::class, 'get_harga_excel']);
     Route::get('/create', [Harga_Controller_A::class, 'tambah_harga']);
     Route::post('/create', [Harga_Controller_A::class, 'save_harga']);
     Route::get('/update/{id}', [Harga_Controller_A::class, 'update_harga']);
