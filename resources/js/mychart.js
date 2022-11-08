@@ -1,16 +1,6 @@
 import Chart from 'chart.js/auto';
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-];
-
-const data = {
+let data = {
     labels: labels,
     datasets: [{
         label: 'My First dataset',

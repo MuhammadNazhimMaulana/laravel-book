@@ -2114,7 +2114,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.mjs");
 
-var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 var data = {
   labels: labels,
   datasets: [{

@@ -11,6 +11,9 @@
 </div>
 
 @section('script')
+    <script>
+        const labels = @json($names)
+    </script>
     <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
 
