@@ -33,7 +33,7 @@ class UtamaRepository_Admin implements UtamaInterface_Admin
         $data = [
             'title' => 'Dashboard',
             'names' => $names,
-            'transaction_data' => $total
+            'transaction_data' => $total_transaction
         ];
 
         return view('Admin/Utama/dashboard_admin', $data);

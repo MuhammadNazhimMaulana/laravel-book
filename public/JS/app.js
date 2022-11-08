@@ -2117,18 +2117,18 @@ __webpack_require__.r(__webpack_exports__);
 var data = {
   labels: labels,
   datasets: [{
-    label: 'My First dataset',
+    label: 'Pembelian Buku User',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45]
+    data: trans
   }]
 };
 var config = {
-  type: 'line',
+  type: 'doughnut',
   data: data,
   options: {}
 };
-new chart_js_auto__WEBPACK_IMPORTED_MODULE_0__["default"](document.getElementById('myChart'), config);
+new chart_js_auto__WEBPACK_IMPORTED_MODULE_0__["default"](document.getElementById('transactionChart'), config);
 
 /***/ }),
 
