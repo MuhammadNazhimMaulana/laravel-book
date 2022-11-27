@@ -16,9 +16,16 @@ use App\Http\Requests\StoreBuku;
 use App\Exports\BukuExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+// Traits
+use App\Traits\FileTrait;
+
 class BukuRepository_Admin implements BukuInterface_Admin
 {
     const PER_PAGE = 5;
+
+    const DEFAULT_PATH = 'books';
+
+    use FileTrait;
 
     public function get_buku()
     {
@@ -61,7 +68,24 @@ class BukuRepository_Admin implements BukuInterface_Admin
         ];
 
         if ($request->file('foto_buku')) {
-            $data_buku['foto_buku'] = $request->file('foto_buku')->store('Foto Buku');
+            // Getting File
+            $file = $request->file('foto_buku');
+
+            //Custom Name
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+
+            // Path
+            $filepath = self::DEFAULT_PATH . '/' . $filename;
+
+            //Upload Using s3
+            $this->storeFile($filepath, file_get_contents($file));
+
+            // Image Url
+            $url = $this->showFile($filepath);
+
+            // Saved Data
+            $data_buku['foto_buku'] = $url;
+            $data_buku['path'] = $filepath;
         }
 
         //Create Data Buku Baru 

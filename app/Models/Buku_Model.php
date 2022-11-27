@@ -17,7 +17,7 @@ class Buku_Model extends Model
     protected $primaryKey = 'id';
 
     // Fillable
-    protected $fillable = ['hargaId', 'genreId', 'penulisId', 'judul_buku', 'foto_buku', 'stok_buku', 'jumlah_halaman', 'tanggal_publikasi', 'created_at', 'updated_at'];
+    protected $fillable = ['hargaId', 'genreId', 'penulisId', 'judul_buku', 'foto_buku', 'stok_buku', 'jumlah_halaman', 'path', 'tanggal_publikasi', 'created_at', 'updated_at'];
 
     // Relationship
     public function harga()

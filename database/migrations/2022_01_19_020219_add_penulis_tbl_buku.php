@@ -17,6 +17,7 @@ class AddPenulisTblBuku extends Migration
             $table->foreignId('penulisId')->constrained('tbl_penulis');
             $table->integer('stok_buku');
             $table->string('foto_buku');
+            $table->string('path');
         });
     }
 
@@ -32,6 +33,7 @@ class AddPenulisTblBuku extends Migration
             $table->dropColumn('penulisId');
             $table->dropColumn('stok_buku');
             $table->dropColumn('foto_buku');
+            $table->dropColumn('path');
         });
     }
 }
